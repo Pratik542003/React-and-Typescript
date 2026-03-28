@@ -6,77 +6,67 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* Full screen center */
+/* Center everything */
 body {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #43cea2, #185a9d);
 }
 
-/* Card container */
+/* Main container */
 div {
   text-align: center;
 }
 
-/* Main box */
-form {
+/* Card UI */
+h1, h3, button {
+  margin: 10px 0;
+}
+
+/* Card box */
+body > div {
   background: white;
-  padding: 30px 40px;
+  padding: 40px 50px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  margin-top: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
 /* Heading */
-.hello {
-  color: white;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+h1 {
+  color: #185a9d;
+  font-size: 2rem;
 }
 
-/* Input field */
-input {
-  padding: 10px 15px;
-  border-radius: 8px;
-  border: 2px solid #ddd;
-  outline: none;
-  font-size: 1rem;
-  transition: 0.3s;
-  margin-right: 10px;
-}
-
-input:focus {
-  border-color: #667eea;
+/* Counter */
+h3 {
+  font-size: 1.8rem;
+  color: #333;
 }
 
 /* Button */
 button {
-  padding: 10px 20px;
+  padding: 12px 20px;
   border: none;
-  background: #667eea;
+  border-radius: 10px;
+  background: #43cea2;
   color: white;
-  border-radius: 8px;
-  cursor: pointer;
   font-size: 1rem;
-  transition: 0.3s;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 250px;
 }
 
+/* Hover effect */
 button:hover {
-  background: #5a67d8;
+  background: #2bbf90;
   transform: scale(1.05);
 }
 
-/* Output section */
-h3 {
-  margin-top: 20px;
-  color: white;
-}
-
-p {
-  margin-top: 10px;
-  font-size: 1.2rem;
-  color: #fff;
+/* Fruit text inside button */
+button span {
+  display: block;
+  margin-top: 8px;
   font-weight: bold;
 }
