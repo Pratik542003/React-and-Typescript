@@ -1,19 +1,26 @@
 import { useState } from "react";
 import "./App.css"
 
-function App() {
-  interface Fru {
-    name: string;
-    nutrient: number;
+class Fruit {
+  name: string;
+  nutrient: number;
+
+  constructor(name: string, nutrient: number) {
+    this.name = name;
+    this.nutrient = nutrient;
   }
-  const fruits: Fru[] = [
-    { name: "Apple", nutrient: 50 },
-    { name: "Banana", nutrient: 60 },
-    { name: "Citrus", nutrient: 70 },
-  ];
+}
+
+function App() {
+
+  const fruits:Fruit[]=[
+    new Fruit("Apple",50),
+    new Fruit("Banana", 100),
+    new Fruit("Citrus",1000)
+  ]
 
   const [count, setCount] = useState<number>(0);
-  const [fruit, setFruit] = useState<Fru>();
+  const [fruit, setFruit] = useState<Fruit>();
 
   function handleClick(): void {
     setCount(count + 1);
