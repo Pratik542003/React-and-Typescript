@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css"
+import "./App.css";
 
 class Fruit {
   name: string;
@@ -11,32 +11,58 @@ class Fruit {
   }
 }
 
+interface Juice {
+  fruit: Fruit;
+  isAvailable: boolean;
+}
+
 function App() {
-
-  const fruits:Fruit[]=[
-    new Fruit("Apple",50),
+  const fruits: Fruit[] = [
+    new Fruit("Apple", 50),
     new Fruit("Banana", 100),
-    new Fruit("Citrus",1000)
-  ]
+    new Fruit("Citrus", 1000),
+  ];
 
-  const [count, setCount] = useState<number>(0);
-  const [fruit, setFruit] = useState<Fruit>();
+  const juices: Juice[] = [
+    { fruit: fruits[0], isAvailable: true },
+    { fruit: fruits[1], isAvailable: false },
+    { fruit: fruits[2], isAvailable: true },
+  ];
 
-  function handleClick(): void {
-    setCount(count + 1);
-    if (count % 3 === 0) {
-      setFruit(fruits[0]);
-    } else if (count % 3 === 1) {
-      setFruit(fruits[1]);
-    } else {
-      setFruit(fruits[2]);
-    }
+  // ✅ state to control displayed list
+  const [list, setList] = useState<Juice[]>(juices);
+
+  function showColor(name: string): string {
+    const colorMap: Record<string, string> = {
+      Apple: "red",
+      Banana: "gold",
+      Citrus: "orange",
+    };
+    return colorMap[name] || "black";
   }
+
+  // ✅ filter function
+  function showNutrients(): void {
+    const filtered = juices.filter((j) => j.fruit.nutrient > 99);
+    setList(filtered);
+  }
+
   return (
     <div>
-      <h1>Fruit Counter</h1>
-      <h3>{count}</h3>
-      <button onClick={handleClick}>Fruit name is :{fruit?.name} Fruit nutrient is: {fruit?.nutrient}</button>
+      <h1>Fruit List</h1>
+
+      <ul>
+        {list.map((j, index) => (
+          <li key={index} style={{ color: showColor(j.fruit.name) }}>
+            {j.fruit.name} - {j.fruit.nutrient} -{" "}
+            {j.isAvailable ? "Available" : "Not Available"}
+          </li>
+        ))}
+      </ul>
+
+      <button onClick={showNutrients}>
+        Show Nutrient &gt; 99
+      </button>
     </div>
   );
 }
